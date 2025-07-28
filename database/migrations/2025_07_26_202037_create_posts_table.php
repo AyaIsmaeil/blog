@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('title');
             $table->text('content');
             $table->foreignId('category_id')->constrained()->onUpdate('cascade')->OnDelete('cascade');
-            $table->foreignId('tag_id')->constrained()->onUpdate('cascade')->OnDelete('cascade');
             $table->timestamps();
         });
     }

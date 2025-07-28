@@ -38,11 +38,41 @@ class PostController extends Controller
             'category_id' => $request->category_id,
             'user_id' => auth()->user()->id
         ]);
-
+        
         $posts->tags()->attach($request->tags);
         return redirect()->route('posts.index');
 
     }
+
+    function edit(Request $request,Post $post){
+        $categories = Category::all();
+        $tags = Tag::get();
+        return view('posts.edit',compact('categories','tags'));  
+
+    }
+    function update(Request $request,Post $post){
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'content' => 'required|string',
+            'category_id' => 'required|exists:categories,id',
+            'tags' => 'required|exists:tags,id',
+        ]);
+        $post->update([
+            'title' => $request->title,
+            'content' => $request->content,
+            'category_id' => $request->category_id,
+        ]);
+        $post->tags()->attach($request->tags);
+        return redirect()->route('posts.index');
+    }
+    function destroy(Post $post){
+        $post->delete();
+        return redirect()->route('posts.index');
+    }
+    
+
+
+    
 
 
 

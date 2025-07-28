@@ -9,16 +9,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
         <div class="container">
             <a class="navbar-brand" href="{{ route('posts.index') }}">Blog</a>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <button class="btn btn-link nav-link" type="submit">Logout</button>
-                        </form>
-                    </li>
-                </ul>
-            </div>
+            @yield('nav')
         </div>
     </nav>
 
