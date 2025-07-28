@@ -20,7 +20,7 @@
         <div class="mb-3">
             <label>Category</label>
             <select name="category_id" class="form-select">
-                <option value="">None</option>
+                <option value="">Select a category</option>
                 @foreach ($categories as $category)
                     <option value="{{ $category->id }}" @if ($post->category_id == $category->id) selected @endif>
                         {{ $category->name }}
